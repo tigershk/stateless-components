@@ -1,25 +1,25 @@
-import React from 'react';
-import Player from './Player';
-import Search from './Search';
+import React from "react";
+import Player from "./Player";
+import Search from "./Search";
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      videoId: 'nLF0n9SACd4'
+      videoId: "nLF0n9SACd4"
     };
 
     this.playVideo = this.playVideo.bind(this);
   }
 
-  playVideo(videoId){
+  playVideo(videoId) {
     this.setState({
       videoId: videoId
     });
   }
 
-  render(){
+  render() {
     return (
       <div className="row">
         <div className="col-12 d-flex justify-content-center">

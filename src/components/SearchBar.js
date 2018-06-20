@@ -1,22 +1,26 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+function SearchBar({ handleSubmit, handleChange }) {
 
-class SearchBar extends React.Component {
-  render(){
-    return (
-      <form
-        className="d-flex justify-content-center"
-        onSubmit={this.props.handleSubmit}
-      >
-        <input
-          type="text"
-          name="query"
-          placeholder="Search..."
-          onChange={this.props.handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
-    );
-  }
+
+
+  return (
+    <form
+      className="d-flex justify-content-center"
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        name="query"
+        placeholder="Search..."
+        onChange={handleChange}
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+}
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func
 };
 
 export default SearchBar;

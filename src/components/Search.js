@@ -1,14 +1,15 @@
-import React from 'react';
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
-import search from '../services/search';
+import React from "react";
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
+import search from "../services/search";
+import PropTypes from "prop-types";
 
 class Search extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      query: '',
+      query: "",
       results: []
     };
 
@@ -16,13 +17,13 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event){
+  handleChange(event) {
     this.setState({
       query: event.target.value
     });
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
 
     search(this.state.query)
@@ -33,7 +34,8 @@ class Search extends React.Component {
       });
   }
 
-  render(){
+  render() {
+    const { playVideo } = this.props;
     return (
       <div>
         <SearchBar
@@ -42,12 +44,17 @@ class Search extends React.Component {
           query={this.state.query}
         />
         <SearchResults
-          playVideo={this.props.playVideo}
+          playVideo={playVideo}
           results={this.state.results}
         />
       </div>
     );
-  }
+
+  };
+
+};
+Search.propTypes = {
+  playVideo: PropTypes.func
 };
 
 export default Search;
