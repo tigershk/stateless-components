@@ -10,7 +10,19 @@
     "react"
   ],
   "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "single"]
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "react/prefer-stateless-function": [
+      "error"
+    ],
+    "react/prop-types": [
+      "error"
+    ]
   }
 }

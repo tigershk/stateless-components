@@ -1,19 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 class Player extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
   }
 
-  componentDidMount(){
-    window.onYouTubeIframeAPIReady = function(){
-      this.player = new YT.Player('player', {
-        height: '390',
-        width: '640',
-        videoId: this.props.videoId,
+  componentDidMount() {
+
+    const { videoId } = this.props;
+
+    window.onYouTubeIframeAPIReady = function () {
+      this.player = new YT.Player("player", {
+        height: "390",
+        width: "640",
+        videoId,
         events: {
           onStateChange: this.onPlayerStateChange
         }
@@ -21,28 +24,31 @@ class Player extends React.Component {
     }.bind(this);
   }
 
-  onPlayerStateChange( event ){
+  onPlayerStateChange(event) {
 
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     const { videoId } = nextProps;
-    if(videoId !== this.props.videoId){
-      this.player.loadVideoById( videoId );
+    if (videoId !== this.props.videoId) {
+      this.player.loadVideoById(videoId);
     }
   }
 
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     return false;
-  }
+  };
 
-  render(){
+  render() {
     return (
       <div>
         <div id="player"></div>
       </div>
     );
-  }
+  };
+};
+Player.propTypes = {
+  videoId: PropTypes.string
 };
 
 export default Player;

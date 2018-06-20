@@ -1,33 +1,28 @@
-import React from 'react';
+import React from "react";
 
-class SearchResult extends React.Component {
-  render(){
-    const { snippet } = this.props.result;
-    const { videoId } = this.props.result.id;
-    const { description, title } = snippet;
-    const { height, width, url } = this.props.result.snippet.thumbnails.default;
-    return (
-      <li
-        className="result-item"
-        onClick={ event => {
-          this.props.playVideo(videoId);
-        }}
-      >
-        <img
-          className="result-img"
-          src={url}
-          height={height}
-          width={width}
-        />
-        <div className="result-description">
-          <div>
-            <strong>{title}</strong>
-          </div>
-          {description}
+function SearchResult({ result, playVideo }) {
+
+  const { snippet } = result;
+  const { videoId } = result.id;
+  const { description, title } = snippet;
+  const { height, width, url } = snippet.thumbnails.default;
+  return (
+    <li
+      className="result-item"
+      onClick={event => {
+        playVideo(videoId);
+      }}
+    >
+      <img className="result-img" src={url} height={height} width={width} />
+      <div className="result-description">
+        <div>
+          <strong>{title}</strong>
         </div>
-      </li>
-    );
-  }
-};
+        {description}
+      </div>
+    </li>
+  );
+}
+
 
 export default SearchResult;
